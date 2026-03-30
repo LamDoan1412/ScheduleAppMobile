@@ -1,0 +1,130 @@
+CHƯƠNG 1: GIỚI THIỆU ĐỀ TÀI
+1.1. Lý do chọn đề tài
+•	Trong cuộc sống hiện đại bận rộn, việc quản lý thời gian hiệu quả là vô cùng cần thiết.
+•	Smartphone là vật bất ly thân, là công cụ lý tưởng để nhắc nhở công việc mọi lúc mọi nơi.
+•	Mong muốn tạo ra một ứng dụng không chỉ hữu ích mà còn có giao diện đẹp, thân thiện, mang lại cảm hứng cho người dùng.
+•	Áp dụng các công nghệ lập trình Android mới nhất (Jetpack Compose, Room Database) để nâng cao kỹ năng chuyên môn và đáp ứng yêu cầu tuyển dụng hiện nay.
+1.2. Mục tiêu của đề tài
+•	Xây dựng thành công ứng dụng "Nhắc nhở lịch trình" trên hệ điều hành Android.
+•	Ứng dụng đáp ứng các chức năng cơ bản: Thêm, sửa, xóa, xem lịch trình và thông báo nhắc nhở chính xác.
+•	Thiết kế giao diện người dùng hiện đại (UI/UX), mượt mà, tối ưu trải nghiệm người dùng.
+1.3. Phạm vi nghiên cứu
+•	Nghiên cứu ngôn ngữ lập trình Kotlin và bộ công cụ giao diện Jetpack Compose.
+•	Tìm hiểu kiến trúc phần mềm MVVM, cơ sở dữ liệu Room và AlarmManager.
+•	Phạm vi ứng dụng: Ứng dụng offline chạy trên nền tảng Android.
+1.4. Bố cục báo cáo
+•	Báo cáo được chia thành 6 chương, trình bày từ cơ sở lý thuyết, phân tích thiết kế đến kết quả thực nghiệm.
+
+CHƯƠNG 2: CƠ SỞ LÝ THUYẾT VÀ CÔNG NGHỆ
+2.1. Tổng quan về lập trình Android và ngôn ngữ Kotlin
+•	Giới thiệu hệ điều hành Android.
+•	Lý do chọn ngôn ngữ Kotlin (Hiện đại, an toàn, code ngắn gọn, được Google ưu tiên).
+2.2. Jetpack Compose (Điểm nhấn của bài)
+•	Khái niệm: Toolkit hiện đại của Google để xây dựng UI bằng code thuần (Declarative UI).
+•	Ưu điểm so với XML truyền thống (Code ít hơn, dễ bảo trì, Animation mượt mà, tái sử dụng cao).
+•	Các thành phần cơ bản: Composable, State Management (remember, mutableStateOf), LazyColumn.
+2.3. Cơ sở dữ liệu Room Database
+•	Giới thiệu thư viện Room (lớp bao bọc SQLite giúp truy xuất dữ liệu mạnh mẽ hơn).
+•	Các thành phần: Entity (Bảng), DAO (Truy vấn), Database.
+•	Lợi ích: Lưu trữ dữ liệu offline, kiểm tra lỗi cú pháp SQL khi biên dịch, an toàn luồng (Thread-safety).
+2.4. Kiến trúc MVVM (Model-View-ViewModel)
+•	Mô hình kiến trúc giúp tách biệt giao diện (UI) và logic xử lý dữ liệu.
+•	Vai trò của ViewModel và LiveData/Flow trong việc quản lý vòng đời ứng dụng.
+2.5. Các kỹ thuật khác
+•	AlarmManager & BroadcastReceiver: Cơ chế hẹn giờ và gửi thông báo nền chính xác.
+•	Material Design 3: Ngôn ngữ thiết kế mới nhất của Google áp dụng cho giao diện.
+
+CHƯƠNG 3: PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG
+3.1. Xác định yêu cầu bài toán
+Yêu cầu chức năng:
+•	Thêm lịch trình mới (Nhập tiêu đề, chọn giờ, chọn loại công việc).
+•	Xem danh sách lịch trình theo ngày (Lọc công việc theo Calendar).
+•	Sửa/Xóa lịch trình đã tạo.
+•	Đánh dấu hoàn thành công việc (Gạch chéo, đổi màu).
+•	Thông báo nhắc nhở (Notification) khi đến giờ hẹn.
+Yêu cầu phi chức năng:
+•	Giao diện đẹp, "cute", hiện đại, có hiệu ứng chuyển động mượt mà.
+•	Thao tác dễ dàng, phản hồi nhanh.
+3.2. Biểu đồ Use Case
+•	Mô tả các tác nhân và chức năng của hệ thống (User -> Thêm, Sửa, Xóa, Xem...).
+3.3. Thiết kế Cơ sở dữ liệu (Database Schema)
+Mô tả bảng reminders:
+•	id: Khóa chính (Tự tăng).
+•	title: Tên công việc (String).
+•	timeInMillis: Thời gian nhắc nhở (Long).
+•	isDone: Trạng thái hoàn thành (Boolean).
+•	category: Danh mục (Enum: Công việc, Cá nhân, Sức khỏe...).
+•	alarmId: ID dùng để quản lý PendingIntent.
+3.4. Thiết kế giao diện (UI/UX Design)
+•	Mô tả ý tưởng giao diện: Sử dụng hình nền (background image), các thẻ bo tròn (rounded cards), tông màu chủ đạo tươi sáng.
+•	Sử dụng TimePicker bo tròn tùy chỉnh.
+
+CHƯƠNG 4: XÂY DỰNG VÀ PHÁT TRIỂN ỨNG DỤNG
+4.1. Môi trường phát triển
+•	Android Studio (IDE), JDK 11+, Gradle Build Tool.
+4.2. Tổ chức cấu trúc dự án
+•	Phân chia package rõ ràng: data (Room entity, DAO), ui (Screens, ViewModel, Components), utils (Alarm helper, Constants).
+4.3. Xây dựng các chức năng chính (Kèm trích đoạn code quan trọng)
+•	Xây dựng Giao diện chính (MainActivity): Sử dụng Scaffold, LazyColumn và AndroidView (để nhúng CalendarView).
+•	Xử lý Logic thêm nhắc nhở: Sử dụng ModalBottomSheet hiện đại và TimePicker tùy chỉnh giao diện.
+•	Xử lý Lưu trữ dữ liệu: Cấu hình Room Database, Repository và Coroutines để xử lý bất đồng bộ.
+•	Xử lý Hẹn giờ: Thiết lập AlarmManager, BroadcastReceiver và NotificationChannel.
+4.4. Tùy biến giao diện (Custom UI)
+•	Kỹ thuật bo tròn TimePicker trong themes.xml.
+•	Kỹ thuật tạo hiệu ứng mờ (transparency) và hình nền tùy chỉnh trong Compose.
+•	Sử dụng Animation (animateItemPlacement) cho danh sách.
+
+CHƯƠNG 5: KẾT QUẢ THỰC NGHIỆM VÀ KIỂM THỬ
+5.1. Giao diện chương trình
+Chụp ảnh màn hình các chức năng thực tế:
+•	Màn hình chính khi có dữ liệu và khi trống (Empty State).
+•	Màn hình chọn giờ (TimePicker) đẹp mắt, bo tròn.
+•	Màn hình thêm công việc (Modal Bottom Sheet).
+•	Thông báo (Notification) hiển thị trên thanh trạng thái và màn hình khóa.
+5.2. Kịch bản kiểm thử (Test Cases)
+Bảng kiểm thử chức năng:
+•	Test 1: Thêm công việc mới -> Kết quả: Lưu thành công vào DB, hiển thị ngay lên list.
+•	Test 2: Đến đúng giờ hẹn -> Kết quả: Máy rung/chuông và hiện thông báo.
+•	Test 3: Xoay màn hình/Khởi động lại máy -> Kết quả: Dữ liệu không bị mất.
+•	Test 4: Đánh dấu hoàn thành -> Kết quả: Chữ bị gạch ngang, mờ đi.
+5.3. Đánh giá hiệu năng
+•	Mức độ mượt mà khi cuộn danh sách (nhờ tối ưu LazyColumn).
+•	Dung lượng ứng dụng nhỏ gọn.
+
+CHƯƠNG 6: KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN
+
+6.1. Kết luận
+Sau một thời gian nghiên cứu và làm việc nghiêm túc, nhóm thực hiện đã hoàn thành đề tài "Xây dựng ứng dụng Nhắc nhở lịch trình trên hệ điều hành Android". Các mục tiêu ban đầu đặt ra đã cơ bản được hoàn thành, cụ thể:
+
+Thứ nhất, về mặt sản phẩm:
+•	Đã xây dựng thành công một ứng dụng Android hoàn chỉnh, hoạt động ổn định trên các thiết bị chạy Android 8.0 trở lên.
+•	Các chức năng cốt lõi như Thêm, Sửa, Xóa lịch trình hoạt động chính xác, dữ liệu được lưu trữ bền vững trong cơ sở dữ liệu.
+•	Hệ thống thông báo (Notification) hoạt động đúng giờ, đảm bảo tính năng nhắc nhở người dùng không bị bỏ lỡ công việc ngay cả khi ứng dụng đang tắt.
+
+Thứ hai, về mặt công nghệ:
+•	Đã tiếp cận và làm chủ được Jetpack Compose - bộ công cụ giao diện hiện đại nhất của Google. Việc từ bỏ XML truyền thống để chuyển sang Declarative UI giúp mã nguồn gọn gàng, dễ bảo trì và khả năng tái sử dụng cao hơn.
+•	Áp dụng thành công kiến trúc MVVM (Model-View-ViewModel), giúp tách biệt rõ ràng giữa giao diện và logic xử lý, thuận tiện cho việc kiểm thử và mở rộng sau này.
+•	Sử dụng hiệu quả thư viện Room Database cho việc lưu trữ offline và AlarmManager cho việc xử lý tác vụ nền.
+
+Thứ ba, về mặt giao diện (UI/UX):
+•	Ứng dụng sở hữu giao diện trẻ trung, hiện đại với phong cách thiết kế bo tròn (Rounded Design), hình nền tùy biến và tông màu tươi sáng, tạo cảm giác thân thiện và hứng thú cho người dùng khi sử dụng.
+
+6.2. Hạn chế
+Mặc dù đã nỗ lực hoàn thiện, tuy nhiên do giới hạn về thời gian và kiến thức, ứng dụng vẫn còn tồn tại một số hạn chế:
+
+•	Hạn chế về đồng bộ dữ liệu: Hiện tại, ứng dụng chỉ lưu trữ dữ liệu cục bộ (Offline) trên thiết bị người dùng thông qua Room Database. Nếu người dùng xóa ứng dụng hoặc mất thiết bị, dữ liệu lịch trình sẽ bị mất và không thể khôi phục.
+•	Hạn chế về tính năng lặp lại: Ứng dụng chưa hỗ trợ các loại lịch trình phức tạp như lặp lại hàng ngày, hàng tuần, hàng tháng hoặc lặp lại theo chu kỳ tùy chỉnh.
+•	Hạn chế về đa dạng thiết bị: Ứng dụng mới chỉ được kiểm thử tốt trên các dòng máy Pixel và Samsung phổ biến, chưa được kiểm thử rộng rãi trên các thiết bị máy tính bảng hoặc các phiên bản Android tùy biến sâu.
+
+6.3. Hướng phát triển
+Để ứng dụng trở nên hoàn thiện hơn và có thể phát hành rộng rãi, nhóm đề xuất các hướng phát triển trong tương lai như sau:
+
+•	Tích hợp Cloud Storage (Firebase hoặc REST API): Xây dựng tính năng đăng nhập và đồng bộ dữ liệu lên đám mây. Điều này giúp người dùng có thể truy cập lịch trình từ nhiều thiết bị khác nhau và bảo toàn dữ liệu khi đổi máy.
+•	Tích hợp Google Calendar API: Cho phép đồng bộ hai chiều với Lịch Google, giúp người dùng quản lý tập trung mọi công việc ở một nơi.
+•	Nâng cấp tính năng thông báo: Bổ sung tính năng báo lại (Snooze), chọn nhạc chuông tùy thích, hoặc đọc to nội dung nhắc nhở (Text-to-Speech) để hỗ trợ người dùng khi đang lái xe.
+•	Tối ưu hóa UI/UX: Bổ sung chế độ Dark Mode tự động theo hệ thống, hỗ trợ Widget màn hình chính (Home Screen Widget) để xem nhanh lịch trình mà không cần mở ứng dụng.
+•	Ứng dụng AI: Nghiên cứu tích hợp AI để tự động đề xuất lịch trình dựa trên thói quen của người dùng hoặc hỗ trợ nhập liệu bằng giọng nói tiếng Việt.
+
+TÀI LIỆU THAM KHẢO
+•	Android Developer Documentation (developer.android.com).
+•	Jetpack Compose Documentation.

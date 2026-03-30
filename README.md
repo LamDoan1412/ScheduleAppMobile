@@ -39,7 +39,7 @@
 
 | Màn hình chính | Thêm lịch trình | Chọn giờ |
 | :---: | :---: | :---: |
-| ![Main Screen](https://via.placeholder.com/200x400?text=Main+Screen) | ![Add Task](https://via.placeholder.com/200x400?text=Add+Task) | ![Time Picker](https://via.placeholder.com/200x400?text=Time+Picker) |
+| !![img.png](img.png)[Main Screen](https://via.placeholder.com/200x400?text=Main+Screen) | ![Add Task](https://via.placeholder.com/200x400?text=Add+Task) | ![Time Picker](https://via.placeholder.com/200x400?text=Time+Picker) |
 
 ---
 
